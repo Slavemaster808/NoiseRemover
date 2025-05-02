@@ -1,6 +1,8 @@
 set(target_name window)
 
 find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
+find_package(Qt6 REQUIRED COMPONENTS Widgets MultimediaWidgets)
+find_package(Qt6 REQUIRED COMPONENTS Widgets Multimedia)
 
 add_library(${target_name} STATIC
   window/mainwindow.cpp
@@ -14,6 +16,8 @@ target_include_directories(
 
 target_link_libraries(
     ${target_name}
+    Qt6::MultimediaWidgets
+    Qt6::Multimedia
     Qt6::Core
     Qt6::Gui
     Qt6::Widgets

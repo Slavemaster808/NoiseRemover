@@ -8,6 +8,8 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QWidget>
+#include <QtMultimedia/QMediaPlayer>
+#include <QtMultimediaWidgets/QVideoWidget>
 #include <QtWidgets/QtWidgets>
 
 // namespace Ui {
@@ -26,18 +28,71 @@
 //     Ui::MainWindow *ui;
 // };
 
+// class MainWindow : public QWidget {
+//   Q_OBJECT
+
+//  public:
+//   MainWindow(QWidget* parent = nullptr);
+
+//  protected:
+//   void dragEnterEvent(QDragEnterEvent* event) override;
+//   void dropEvent(QDropEvent* event) override;
+
+//  private slots:
+//   void handleFile(const QString& filePath);
+
+//  private:
+//   QPushButton* m_uploadButton;
+//   QPushButton* m_downloadButton;
+//   QProgressBar* m_progressBar;
+//   QLabel* m_titleLabel;
+//   QLabel* m_previewLabel;
+//   QVideoWidget* m_videoWidget;
+//   QMediaPlayer* m_mediaPlayer;
+// };
+
+// class MainWindow : public QWidget {
+//   Q_OBJECT
+
+//  public:
+//   MainWindow(QWidget* parent = nullptr);
+
+//  protected:
+//   void dragEnterEvent(QDragEnterEvent* event) override;
+//   void dropEvent(QDropEvent* event) override;
+
+//  private slots:
+//   void handleFile(const QString& filePath);
+//   void onUploadClicked();
+
+//  private:
+//   QPushButton* m_uploadButton;
+//   QPushButton* m_downloadButton;
+//   QProgressBar* m_progressBar;
+//   QLabel* m_titleLabel;
+//   QLabel* m_fileNameLabel;  // Новая метка для отображения имени файла
+//   QMediaPlayer* m_mediaPlayer;
+// };
+
 class MainWindow : public QWidget {
   Q_OBJECT
 
  public:
   MainWindow(QWidget* parent = nullptr);
 
+ protected:
+  void dragEnterEvent(QDragEnterEvent* event) override;
+  void dropEvent(QDropEvent* event) override;
+
  private slots:
-  void openFileDialog();  // Метод для открытия проводника
+  void handleFile(const QString& filePath);
+  void onUploadClicked();
 
  private:
   QPushButton* m_uploadButton;
   QPushButton* m_downloadButton;
   QProgressBar* m_progressBar;
   QLabel* m_titleLabel;
+  QLabel* m_fileNameLabel;  // Будет отображать только имя файла
+  QMediaPlayer* m_mediaPlayer;
 };
