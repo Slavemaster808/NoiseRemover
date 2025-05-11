@@ -23,5 +23,5 @@ set(CMAKE_RC_COMPILER_WORKS true)
 set(RESOURCES_DIR ${CMAKE_CURRENT_SOURCE_DIR}/resources)
 
 add_subdirectory(src)
-
+add_subdirectory(external)
 # qt_add_resources(resources resources.qrc)
