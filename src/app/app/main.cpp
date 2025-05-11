@@ -1,48 +1,49 @@
 #include <QApplication>
 #include <window/mainwindow.hpp>
 
-// #include <QtWidgets/QtWidgets>
+#if 0
+int main(int argc, char** argv)
+{
+    QApplication app{argc, argv};
 
-// int main(int argc, char** argv)
-// {
-//     QApplication app{argc, argv};
+    QWidget window;
+    window.setWindowFlag(Qt::FramelessWindowHint);
+    window.resize(250, 150);
+    window.move(300, 300);
+    window.setWindowTitle("Hello Qt");
+    window.show();
 
-//     QWidget window;
-//     window.setWindowFlag(Qt::FramelessWindowHint);
-//     window.resize(250, 150);
-//     window.move(300, 300);
-//     window.setWindowTitle("Hello Qt");
-//     window.show();
+    auto l = new QVBoxLayout();
 
-//     auto l = new QVBoxLayout();
+    auto le = new QLineEdit("");
+    l->addWidget(le);
 
-//     auto le = new QLineEdit("");
-//     l->addWidget(le);
+    auto b = new QPushButton("Click me");
+    b->setStyleSheet("background-color: #4CAF50; color: white; font-weight:
+    bold; font-size: 16px; border-radius: 8px;"); QObject::connect(b,
+    &QPushButton::clicked, [=]() {
+        if (le->text() == "Егор пидарас")
+            QMessageBox::critical(nullptr, "", "Да");
+    });
+    l->addWidget(b);
 
-//     auto b = new QPushButton("Click me");
-//     b->setStyleSheet("background-color: #4CAF50; color: white; font-weight:
-//     bold; font-size: 16px; border-radius: 8px;"); QObject::connect(b,
-//     &QPushButton::clicked, [=]() {
-//         if (le->text() == "Егор пидарас")
-//             QMessageBox::critical(nullptr, "", "Да");
-//     });
-//     l->addWidget(b);
+    window.setLayout(l);
 
-//     window.setLayout(l);
+    return app.exec();
+}
 
-//     return app.exec();
-// }
-
-// int main(int argc, char *argv[])
-// {
-//     QApplication a(argc, argv);
-//     MainWindow w;
-//     w.show();
-//     return a.exec();
-// }
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.show();
+    return a.exec();
+}
+#endif
 
 int main(int argc, char* argv[]) {
   QApplication app(argc, argv);
+  app.setWindowIcon(QIcon(":/images/icons/icon1.ico"));
 
   MainWindow window;
   window.setWindowTitle("Noise Remover");

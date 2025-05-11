@@ -18,16 +18,9 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/cmake)
 
-# Генерация ресурса
 set(CMAKE_RC_COMPILER_WORKS true)
-set(CMAKE_RC_FLAGS "-fo${CMAKE_CURRENT_BINARY_DIR}/resource.res")
 
-add_custom_command(
-  OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/resource.res
-  COMMAND windres ${CMAKE_CURRENT_SOURCE_DIR}/resource.rc -O coff -o ${CMAKE_CURRENT_BINARY_DIR}/resource.res
-  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-  VERBATIM
-)
+set(RESOURCES_DIR ${CMAKE_CURRENT_SOURCE_DIR}/resources)
 
 add_subdirectory(src)
 

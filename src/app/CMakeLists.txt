@@ -1,14 +1,9 @@
 set(target_name NoiseRemover)
 
-# Первое, что делаем — ставим зависимость от ресурса
-# add_custom_target(resource_gen ALL
-#   DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/resource.res
-# )
-
-# Второе — создаём цель с зависимостью от resource_gen
 add_executable(${target_name} WIN32
   app/main.cpp
-  # ${CMAKE_CURRENT_BINARY_DIR}/resource.res
+  ${RESOURCES_DIR}/resources.qrc
+  ${RESOURCES_DIR}/resource.rc
 )
 
 target_sources(
@@ -22,6 +17,3 @@ target_link_libraries(
   PRIVATE
   window
 )
-
-# Ставим зависимость на ресурс
-# add_dependencies(${target_name} resource_gen)
